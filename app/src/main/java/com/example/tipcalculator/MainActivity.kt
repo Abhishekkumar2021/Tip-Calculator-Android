@@ -118,7 +118,10 @@ fun BillValueCard(billValue: Float, onValueChange: (Float) -> Unit) {
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Next
-                )
+                ),
+                leadingIcon = {
+                    Text("$", style = MaterialTheme.typography.bodyMedium)
+                }
             )
         }
     }
