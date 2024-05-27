@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -239,6 +240,17 @@ fun TotalValueCard(billValue: Float, tipPercentage: Float, roundOff: Boolean) {
             )
         }
     }
+}
+
+// Local testing of a function
+@VisibleForTesting
+internal fun add(a: Int, b: Int): Int {
+    return a + b
+}
+
+@VisibleForTesting
+internal fun subtract(a: Int, b: Int): Int {
+    return a - b
 }
 
 @Preview(showBackground = true)
