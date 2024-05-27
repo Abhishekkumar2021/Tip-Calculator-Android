@@ -13,6 +13,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -30,6 +33,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -56,8 +61,10 @@ fun TipCalculatorApp(modifier: Modifier = Modifier) {
 
     // UI Layout
     Column(
-        modifier = modifier.fillMaxSize()
-            .background(Color.hsl(120f, 0.3f, 0.95f)),
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color.hsl(120f, 0.3f, 0.95f))
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -93,7 +100,8 @@ fun TipCalculatorApp(modifier: Modifier = Modifier) {
 @Composable
 fun BillValueCard(billValue: Float, onValueChange: (Float) -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(horizontal = 16.dp),
     ) {
         Column(
@@ -106,7 +114,11 @@ fun BillValueCard(billValue: Float, onValueChange: (Float) -> Unit) {
                     onValueChange(it.toFloatOrNull() ?: 0f)
                 },
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text("Enter Bill Value") }
+                label = { Text("Enter Bill Value") },
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                )
             )
         }
     }
@@ -115,7 +127,8 @@ fun BillValueCard(billValue: Float, onValueChange: (Float) -> Unit) {
 @Composable
 fun TipPercentageCard(tipPercentage: Float, onValueChange: (Float) -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
         Column(
@@ -140,7 +153,8 @@ fun TipPercentageCard(tipPercentage: Float, onValueChange: (Float) -> Unit) {
 @Composable
 fun RoundOffCard(roundOff: Boolean, onValueChange: (Boolean) -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
         Row(
@@ -171,7 +185,8 @@ fun TipValueCard(billValue: Float, tipPercentage: Float, roundOff: Boolean) {
     }
 
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
         Column(
@@ -202,7 +217,8 @@ fun TotalValueCard(billValue: Float, tipPercentage: Float, roundOff: Boolean) {
     }
 
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
         Column(
